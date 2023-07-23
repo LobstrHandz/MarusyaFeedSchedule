@@ -67,6 +67,7 @@ input {
     position: fixed;
     right: 20vw;
     bottom: 0;
+    z-index: -1;
     height: 400px;
     width: 400px;
     background: url(./assets/marusya.png);
@@ -90,6 +91,7 @@ input {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    margin-bottom: 32px;
 }
 
 .title {
@@ -131,38 +133,59 @@ input {
     margin: 0 8px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1081px) {
     body {
         align-items: flex-start;
         justify-content: center;
+    }
+    
+    .marusya {
+        height: 800px;
+        width: 800px;
+        right: -32px;
+    }
+
+    .app-container {
+        margin-top: 256px;
+        margin-left: 0;
+    }
+
+    .loader {
+        margin-bottom: 64px;
+    }
+
+    .title {
+        font-size: 64px;
+    }
+
+    .modal-controls {
+        margin-top: 64px;
+    }
+
+    .modal-controls button {
+        margin: 0 16px;
     }
 
     body,
     button,
     input {
-        font-size: 24px;
+        font-size: 48px;
     }
 
     button,
     input {
-        padding: 16px;
-    }
-    
-    .marusya {
-        right: -32px;
+        padding: 32px;
     }
 
-    .app-container {
-        margin-top: 64px;
-        margin-left: 0;
-    }
-
-    .title {
-        font-size: 28px;
+    button,
+    input,
+    .app-container,
+    .modal-body {
+        border-radius: 18px;
     }
 
     .app-container,
     .modal-body {
-        padding: 32px;
+        padding: 64px;
     }
 }
