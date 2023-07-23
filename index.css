@@ -148,6 +148,7 @@ input {
 
     .app-container {
         min-height: 600px;
+        min-width: 600px;
         margin-top: 256px;
         margin-left: 0;
     }
