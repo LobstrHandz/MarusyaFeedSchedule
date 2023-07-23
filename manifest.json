@@ -1,0 +1,20 @@
+{
+    "name": "MarusyaFeedSchedule",
+    "short_name": "MFS",
+    "start_url": ".",
+    "theme_color": "#B5DDFF",
+    "background_color": "#edf9ff",
+    "display": "standalone",
+    "icons":[
+        {
+            "src":"assets/icon_192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src":"assets/icon_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

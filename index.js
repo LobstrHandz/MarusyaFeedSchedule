@@ -1,3 +1,13 @@
+if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("service_worker.js").then(registration=>{
+        console.log("SW Registered!");
+    }).catch(error => {
+        console.log("SW Registration Failed", error);
+    });
+} else{
+  console.log("Not supported");
+}
+
 (function() {
     const apiBase = 'https://cloud.squidex.io/api/content/marusyafeedschedule';
     const apiFeedEntriesPath = 'feed-entries';
@@ -44,7 +54,7 @@
         const xhr = new XMLHttpRequest();
         const dateRangeStart = `${selectedDate.getUTCFullYear()}-${selectedDate.getUTCMonth() + 1}-${selectedDate.getUTCDate()}`;
         const dateRangeEnd = `${selectedDate.getUTCFullYear()}-${selectedDate.getUTCMonth() + 1}-${selectedDate.getUTCDate() + 1}`;
-        console.log(dateRangeStart, dateRangeEnd)
+
         setLoadingState(true);
         xhr.open('GET', `${apiBase}/${apiFeedEntriesPath}?$orderby=created asc&&$filter=created ge ${dateRangeStart} and created lt ${dateRangeEnd}`);
         xhr.send();
@@ -135,7 +145,6 @@
     }
 
     timeInput.onkeyup = ({ target: input }) => {
-        console.log(input)
         validateTimeInput(input.value);
     }
 
