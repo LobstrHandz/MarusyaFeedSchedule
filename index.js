@@ -112,7 +112,7 @@ if("serviceWorker" in navigator){
         const result = [];
         const trimmedValue = value.replace(/\D/g, '');
 
-        for (let i = 0; i < Math.min(trimmedValue.length, 5); i++) {
+        for (let i = 0; i < Math.min(trimmedValue.length, 4); i++) {
             if (i === 2 && trimmedValue[i] !== ':') {
                 result.push(':')
             }

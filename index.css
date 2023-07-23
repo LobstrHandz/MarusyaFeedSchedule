@@ -101,6 +101,7 @@ input {
 
 .feeds-container {
     flex-grow: 1;
+    margin: 16px 0;
 }
 
 .modal-container {
@@ -146,6 +147,7 @@ input {
     }
 
     .app-container {
+        min-height: 600px;
         margin-top: 256px;
         margin-left: 0;
     }
@@ -156,6 +158,10 @@ input {
 
     .title {
         font-size: 64px;
+    }
+
+    .feeds-container {
+        margin: 16px 0;
     }
 
     .modal-controls {
