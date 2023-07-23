@@ -131,10 +131,21 @@ input {
     margin: 0 8px;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1024px) {
     body {
         align-items: flex-start;
         justify-content: center;
+    }
+
+    body,
+    button,
+    input {
+        font-size: 24px;
+    }
+
+    button,
+    input {
+        padding: 16px;
     }
     
     .marusya {
@@ -144,5 +155,14 @@ input {
     .app-container {
         margin-top: 64px;
         margin-left: 0;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .app-container,
+    .modal-body {
+        padding: 32px;
     }
 }
