@@ -1,0 +1,148 @@
+:root {
+    --text-color: #3f5b68;
+    --background-color: #edf9ff;
+    --border-color: #7fa3b3;
+    --hover-color: #daf4ff;
+    --background-color-body: #B5DDFF;
+    --background-color-modal: rgba(0, 0, 0, 0.3);
+    --background-disabled-color: lightgrey;
+    --border-disabled-color: grey;
+    --font: Arial, Helvetica, sans-serif;
+}
+
+/* 
+
+*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    background: var(--background-color-body);
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+button {
+    padding: 8px;
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+button:hover {
+    background: var(--hover-color);
+    cursor: pointer;
+}
+
+button:disabled {
+    background: var(--background-disabled-color);
+    border-color: var(--border-disabled-color);
+    color: var(--border-disabled-color);
+}
+
+input {
+    padding: 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-color);
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.marusya {
+    position: fixed;
+    right: 20vw;
+    bottom: 0;
+    height: 400px;
+    width: 400px;
+    background: url(./assets/marusya.png);
+    background-size: cover;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    min-width: 180px;
+    margin-left: 20vw;
+    padding: 16px;
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 18px;
+    text-align: center;
+}
+
+.feeds-container {
+    flex-grow: 1;
+}
+
+.modal-container {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background: var(--background-color-modal);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.modal-controls {
+    display: flex;
+    margin-top: 32px;
+    padding: 0 8px;
+}
+
+.modal-controls button {
+    flex-grow: 1;
+    margin: 0 8px;
+}
+
+@media screen and (max-width: 720px) {
+    body {
+        align-items: flex-start;
+        justify-content: center;
+    }
+    
+    .marusya {
+        right: -32px;
+    }
+
+    .app-container {
+        margin-top: 64px;
+        margin-left: 0;
+    }
+}
