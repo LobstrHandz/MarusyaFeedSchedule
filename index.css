@@ -29,6 +29,12 @@ body {
     font-weight: bold;
 }
 
+ul {
+    margin: 0;
+    padding: 0 8px;
+    list-style-type: none;
+}
+
 button {
     padding: 8px;
     background: var(--background-color);
@@ -132,6 +138,16 @@ input {
 .modal-controls button {
     flex-grow: 1;
     margin: 0 8px;
+}
+
+.portion-amount-input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.portion-amount-input:not(:last-child) {
+    margin-bottom: 8px;
 }
 
 @media screen and (max-width: 1081px) {

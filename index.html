@@ -21,11 +21,43 @@
         
         <div id="modalContainer" class="modal-container hidden">
             <div class="modal-body">
-                <input id="timeInput" class="time-input" />
+                <form name="newEntryForm">
+                    <div>
+                        <input id="timeInput" class="time-input" required />
+                    </div>
+
+                    <div class="portion-amount-input-group">
+                        <div class="portion-amount-input">
+                            <input type="radio" id="portionAmountInputChoice1" name="portionAmountInput" value="Чуть-чуть" required />
+                            <label for="portionAmountInputChoice1">Чуть-чуть</label>
+                        </div>
+                        <div class="portion-amount-input">
+                            <input type="radio" id="portionAmountInputChoice2" name="portionAmountInput" value="10г" />
+                            <label for="portionAmountInputChoice2">10г</label>
+                        </div>
+                        <div class="portion-amount-input">
+                            <input type="radio" id="portionAmountInputChoice3" name="portionAmountInput" value="20г" />
+                            <label for="portionAmountInputChoice3">20г</label>
+                        </div>
+                        <div class="portion-amount-input">
+                            <input type="radio" id="portionAmountInputChoice4" name="portionAmountInput" value="П/п жидкого" />
+                            <label for="portionAmountInputChoice4">П/п жидкого</label>
+                        </div>
+                    </div>
+                    
+                    <!-- <label for="pet-select">Choose a pet:</label>
+                    <select name="portionAmountInput" id="portionAmountInput">
+                        <option value="">--Please choose an option--</option>
+                        <option value="Чуть-чуть">Dog</option>
+                        <option value="10г">Cat</option>
+                        <option value="20г">Hamster</option>
+                        <option value="П/п жидкого">Parrot</option>
+                    </select> -->
+                </form>
 
                 <div class="modal-controls">
-                    <button id="addFeedEntryButton" disabled>OK</button>
                     <button id="cancelFeedEntryButton">Отмена</button>
+                    <button id="addFeedEntryButton" type="submit" disabled>OK</button>
                 </div>
             </div>
         </div>

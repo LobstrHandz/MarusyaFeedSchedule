@@ -10,14 +10,19 @@ if("serviceWorker" in navigator){
 
 (function() {
     const apiBase = 'https://cloud.squidex.io/api/content/marusyafeedschedule';
-    const apiFeedEntriesPath = 'feed-entries';
+    const apiFeedEntriesPath = 'feed-entries-v2';
 
     const title = document.querySelector('#title');
     const loader = document.querySelector('#loader');
     const feedsContainer = document.querySelector('#feedsContainer');
     const openFeedModalButton = document.querySelector('#openFeedModalButton');
     const modalContainer = document.querySelector('#modalContainer');
+    const form = document.forms.newEntryForm;
     const timeInput = document.querySelector('#timeInput');
+    const portionAmountInputChoice1 = document.querySelector('#portionAmountInputChoice1');
+    const portionAmountInputChoice2 = document.querySelector('#portionAmountInputChoice2');
+    const portionAmountInputChoice3 = document.querySelector('#portionAmountInputChoice3');
+    const portionAmountInputChoice4 = document.querySelector('#portionAmountInputChoice4');
     const addFeedEntryButton = document.querySelector('#addFeedEntryButton');
     const cancelFeedEntryButton = document.querySelector('#cancelFeedEntryButton');
     let selectedDate = new Date();
@@ -44,7 +49,6 @@ if("serviceWorker" in navigator){
 
             modalContainer.classList.remove('hidden');
             timeInput.value = `${currentHours < 9 ? `0${currentHours}` : currentHours}:${currentMinutes < 9 ? `0${currentMinutes}` : currentMinutes}`;
-            addFeedEntryButton.disabled = false;
         } else {
             modalContainer.classList.add('hidden');
         }
@@ -71,13 +75,14 @@ if("serviceWorker" in navigator){
 
     const saveData = () => {
         const xhr = new XMLHttpRequest();
-        const data = timeInput.value;
+        const time = form.elements.timeInput.value;
+        const portionAmount = form.elements.portionAmountInput.value;
         
         setModalState(false);
         setLoadingState(true);
         xhr.open('POST', `${apiBase}/${apiFeedEntriesPath}?publish=true`);
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({ value: { iv: data }}));
+        xhr.send(JSON.stringify({ time: { iv: time }, portionAmount: { iv: portionAmount }}));
 
         xhr.onload = () => {
             getData();
@@ -93,12 +98,13 @@ if("serviceWorker" in navigator){
         feedsContainer.innerHTML = '';
 
         if (data.total > 0) {
-            const listElement = document.createElement('ol');
+            const listElement = document.createElement('ul');
             
             for (let i = 0; i < data.total; i++) {
-                const item = data.items[i].data.value.iv;
+                const time = data.items[i].data.time.iv;
+                const portionAmount = data.items[i].data.portionAmount.iv;
                 const itemElement = document.createElement('li');
-                itemElement.innerText = item;
+                itemElement.innerText = `${time} ${portionAmount}`;
                 listElement.appendChild(itemElement);
             }
 
@@ -122,11 +128,15 @@ if("serviceWorker" in navigator){
 
         const resultString = result.join(''); 
         timeInput.value = resultString;
-        
-        if (/^\d{2}:\d{2}$/.test(resultString)) {
-            addFeedEntryButton.disabled = false;
-        } else {
+
+        validateForm();
+    }
+    
+    const validateForm = () => {        
+        if (!/^\d{2}:\d{2}$/.test(form.elements.timeInput.value) || !form.elements.portionAmountInput.value) {
             addFeedEntryButton.disabled = true;
+        } else {
+            addFeedEntryButton.disabled = false;
         }
     }
     
@@ -147,6 +157,10 @@ if("serviceWorker" in navigator){
     timeInput.onkeyup = ({ target: input }) => {
         validateTimeInput(input.value);
     }
+    portionAmountInputChoice1.onchange =
+    portionAmountInputChoice2.onchange =
+    portionAmountInputChoice3.onchange =
+    portionAmountInputChoice4.onchange = validateForm;
 
     runApp();
 })();
